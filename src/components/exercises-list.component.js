@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 /* this file has two components
   functional react com
@@ -17,14 +18,15 @@ const Exercise = (props) => (
     <td>{props.exercise.date.substring(0, 10)}</td>
     <td>
       {/* make button */}
-      <Link to={"/edit/" + props.exercise._id}>edit</Link> |{" "}
-      <button
-        onClick={() => {
+      <Link to={"/edit/" + props.exercise._id}>edit</Link> | {/* <button */}
+      
+      <Button variant="primary"
+        Primary onClick=
+        {() => {
           props.deleteExercise(props.exercise._id);
         }}
-      >
-        delete{" "}
-      </button>
+        > delete{" "}
+      </Button>
     </td>
   </tr>
 );
@@ -72,15 +74,11 @@ export default class EditExercises extends Component {
         />
       );
     });
-
-
   }
 
   render() {
     return (
       <div>
-        
-
         <h3>Logged Exercises</h3>
         <table className="table">
           <thead className="thead-light">

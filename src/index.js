@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 /* import './index.css'; */
 import App from './App';   //creating frontend
 
-
+// Importing the Bootstrap CSS
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 //Places APP into Html

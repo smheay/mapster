@@ -1,10 +1,15 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
-/*   
-mapboxgl.accessToken = mapboxglAccessToken;   */
 
+
+
+
+require('dotenv').config();
+
+
+/* 
+mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_TOKEN;  */
+mapboxgl.accessToken = "pk.eyJ1Ijoic21oZWF5IiwiYSI6ImNrYTQ1NGd0OTA1aXUzdG5pZ3k3bGc2ODAifQ.CFQIzurf-qKXYJCH7JA7Ng";
 
 export default class Mapbox extends Component {
   mapRef = React.createRef();
@@ -12,8 +17,8 @@ export default class Mapbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      lng: 5,
-      lat: 34,
+      lng: -122.6863,
+      lat: 45.5085,
       zoom: 1.5,
     };
   }
@@ -24,9 +29,11 @@ export default class Mapbox extends Component {
     const map = new mapboxgl.Map({
       container: this.mapContainer,
       style: "mapbox://styles/mapbox/streets-v9",
-      center: [-122.6863, 45.5],
+      center: [-122.6863, 45.5085],
       zoom: 16,
+
     });
+
 
     map.on("move", () => {
       this.setState({
@@ -52,8 +59,7 @@ export default class Mapbox extends Component {
       <div className="mapContainer2 bg-dark">
         <div className="sidebarStyle">
           <div>
-            Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom:{" "}
-            {this.state.zoom}
+            Longitude: {this.state.lng} | Latitude: {this.state.lat}
           </div>
         </div>
         <div ref={(el) => (this.mapContainer = el)} className="mapContainer" />
